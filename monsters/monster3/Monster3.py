@@ -1,23 +1,24 @@
 import pygame
-class Monster1(pygame.sprite.Sprite):
+class Monster3(pygame.sprite.Sprite):
     def __init__(self, win):
         self.image = pygame.Surface((64, 64))
-        self.damage = 10
+        self.damage = 30
         self.images_left = []
         self.images_right = []
-        for i in range(10):
+        for i in range(20):
             self.images_left.append(pygame.transform.scale(
-                pygame.transform.flip(pygame.image.load("monsters/monster1/" + str(i + 1) + ".png"), True, False),
+                pygame.transform.flip(pygame.image.load("monsters/monster3/" + str(i + 1) + ".png"), True, False),
                 (64, 64)))
             self.images_right.append(
-                pygame.transform.scale(pygame.image.load("monsters/monster1/" + str(i + 1) + ".png"), (64, 64)))
+                pygame.transform.scale(pygame.image.load("monsters/monster3/" + str(i + 1) + ".png"), (64, 64)))
 
         self.life_images = [
             pygame.transform.scale(pygame.image.load("game_assets/health-bar/health_bar-05.png"), (40, 6)),
             pygame.transform.scale(pygame.image.load("game_assets/health-bar/health_bar-08.png"), (40, 6)),
             pygame.transform.scale(pygame.image.load("game_assets/health-bar/health_bar-04.png"), (40, 6))]
+
         self.walk_count = 0
-        self.life = 100
+        self.life = 500
         self.x = 0
         self.y = 0
         self.path = []
@@ -27,8 +28,8 @@ class Monster1(pygame.sprite.Sprite):
         self.image_number = 0
         self.previous_x = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         self.in_frame = False
-        self.points = 10
-        self.speed = 4
+        self.points = 40
+        self.speed = 3
 
     def set_path(self, path, st):
         for i in range(st * 100):
@@ -72,11 +73,11 @@ class Monster1(pygame.sprite.Sprite):
             self.win.blit(self.images_right[self.image_number], (self.x - 32, self.y - 32))
 
         # Izrišemo življenja pošasti
-        if self.life > 60:
+        if self.life > 300:
             self.win.blit(self.life_images[0], (self.x - 25, self.y - 39))
-        if self.life <= 60 > 20:
+        if self.life <= 300 > 50:
             self.win.blit(self.life_images[1], (self.x - 25, self.y - 39))
-        if self.life <= 20:
+        if self.life <= 50:
             self.win.blit(self.life_images[2], (self.x - 25, self.y - 39))
 
     def finished(self):

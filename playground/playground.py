@@ -38,7 +38,7 @@ class PlayGround(pygame.sprite.Sprite):
                 y2 = int(j[i + 1][1])
 
                 # Izracunamo razdaljo med točkama
-                d = int(math.sqrt(math.pow(x2 - x, 2) + math.pow(y2 - y, 2))) * 4
+                d = int(math.sqrt(math.pow(x2 - x, 2) + math.pow(y2 - y, 2))) * 3
                 xes = np.linspace(x, x2, d + 1)
                 yes = np.linspace(y, y2, d + 1)
                 path = []
